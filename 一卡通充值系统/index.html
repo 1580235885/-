@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+<style>
+
+    .title {
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    .left li:first-child {
+        border-top: none;
+    }
+
+    .left li {
+        cursor: pointer;
+    }
+
+    .left li:hover {
+        background-color: #999;
+    }
+
+    .left .on {
+        background-color: #999;
+    }
+
+    .nav-r {
+        float: right;
+        margin-right: 30px;
+        margin-top: 15px;
+        font-size: 18px;
+    }
+
+    .right {
+        padding: 8px;
+        background-color: #ccc;
+        min-height: 640px;
+    }
+
+    .content {
+        background-color: #fff;
+        height: 100%;
+        padding-top: 10px;
+    }
+
+    .left-r {
+        margin-top: 16px;
+        margin-right: 20px;
+    }
+    .center {
+        margin: auto;
+    }
+    .tr_rechbox {
+        background-color: #f5f5f5;
+    }
+    .other {
+        margin-bottom: 15px;
+    }
+    .form-control {
+        display: inline-block !important;
+        width: 60% !important;
+    }
+    th {
+        text-align: center;
+    }
+    .hid {
+        max-height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .box-shadow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: rgba(0,0,0,.5);
+    }
+    .box-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 400px;
+        max-height: 280px;
+        background-color: #fff;
+        border-radius: 4px;
+    }
+    .box-content h4 {
+        position: relative;
+        margin: 20px 0;
+        text-align: center;
+        letter-spacing: 4px;
+    }
+    .box-content h4 img {
+        position: absolute;
+        right: 20px;
+        top: 0px;
+        width: 20px;
+        cursor: pointer;
+        transform: rotate(-180deg);
+        transition: all .5s ease-in-out;
+    }
+    .box-content h4 img:hover {
+        transform: rotate(180deg);
+        transition: all .5s ease-in-out;
+    }
+    .box-content form {
+        display: block;
+        width: 400px;
+        padding: 20px;
+        margin: auto;
+        border-top: 1px solid #ccc;
+    }
+    .box-content form input {
+        display: block !important;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .box-content form button {
+        width: 200px;
+        display: block !important;
+        margin: auto;
+        outline: none !important;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="nav">
+                <p class="nav-left col-md-2 col-lg-2">
+                    <span>系统导航</span>
+                    <span class="glyphicon glyphicon-list nav-r"></span>
+                </p>
+                <h2 class="title col-md-10 col-lg-10">一卡通充值系统</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="height: calc(100% - 50px);">
+        <div class="row" style="height: 100%;">
+            <div class="left col-md-2 col-lg-2" style="height: 100%;">
+                <ul>
+                    <li class="list1 on">
+                        <span class="glyphicon glyphicon-yen"></span>
+                        <span>充值中心</span>
+                        <span class="left-r glyphicon glyphicon-menu-right pull-right"></span>
+                    </li>
+                    <li class="list2">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span>用户数据管理</span>
+                        <span class="left-r glyphicon glyphicon-menu-right pull-right"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="right col-md-10 col-lg-10" style="height: 100%;">
+                <div class="content col-md-12 col-lg-12">
+                    <div class="tr_recharge center user">   
+                        <div class="tr_rechtext">
+                            <p class="te_retit"><img src="images/coin.png" alt="">充值中心</p>
+                            <p>1. 请先确认充值账号是否正确</p>
+                            <p>2. 一卡通充值金额每次不少于10元最多不超过一万元,你可以选择微信或支付宝付款</p>
+                        </div>
+                        <form action="" class="am-form" id="doc-vld-msg" novalidate="novalidate" onsubmit="return false">
+                            <div class="tr_rechbox">
+                                <div class="tr_rechhead other am-form-group">
+                                    <img src="images/ys_head2.jpg">
+                                    <p>充值帐号：
+                                        <input type="text" class="ID form-control" maxlength="10" minlength="1" data-validation-message="账号长度为十位数字" pattern="^\d{10}$">
+                                    </p>
+                                    <div class="tr_rechheadcion">
+                                        <img src="images/coin.png" alt="">
+                                        <span>当前余额：<span class="all-num">0</span>元</span>
+                                    </div>
+                                    <div class="am-alert am-alert-danger"></div>
+                                </div>
+                                <div class="tr_rechli am-form-group other">
+                                    <ul class="ui-choose am-form-group" id="uc_01">
+                                        <li>
+                                            <label class="am-radio-inline">
+                                                <input type="radio" value="" name="docVlGender" required=""
+                                                    data-validation-message="请选择一项充值额度"> 10￥
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="am-radio-inline">
+                                                <input type="radio" name="docVlGender"
+                                                    data-validation-message="请选择一项充值额度"> 20￥
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="am-radio-inline">
+                                                <input type="radio" name="docVlGender"
+                                                    data-validation-message="请选择一项充值额度"> 50￥
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="am-radio-inline">
+                                                <input type="radio" name="docVlGender"
+                                                    data-validation-message="请选择一项充值额度"> 其他金额
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tr_rechoth am-form-group other">
+                                    <span>其他金额：</span>
+                                    <input type="number" min="10" max="10000" value="10.00元" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" class="othbox"
+                                        data-validation-message="充值金额范围：10-10000元"
+                                        pattern="^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$">
+                                </div>
+                                <div class="tr_rechcho am-form-group">
+                                    <span>充值方式：</span>
+                                    <label class="am-radio">
+                                        <input type="radio" name="radio1" value="" data-am-ucheck="" required=""
+                                            data-validation-message="请选择一种充值方式" class="am-ucheck-radio"><span
+                                            class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i
+                                                class="am-icon-checked"></i></span><img src="images/wechatpay.png">
+                                    </label>
+                                    <label class="am-radio" style="margin-right:30px;">
+                                        <input type="radio" name="radio1" value="" data-am-ucheck=""
+                                            data-validation-message="请选择一种充值方式" class="am-ucheck-radio"><span
+                                            class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i
+                                                class="am-icon-checked"></i></span><img src="images/zfbpay.png">
+                                    </label>
+                                </div>
+                                <div class="tr_rechnum">
+                                    <span>应付金额：</span>
+                                    <p class="rechnum addNum">0.00元</p>
+                                </div>
+                            </div>
+                            <div class="tr_paybox">
+                                <input type="submit" id="ClickMe" value="确认支付" class="tr_pay">
+                                <span>温馨提示：遇到问题请拨打客服联系电话：xxxxxxx。没有账号？<a class="go-login" href="javascript:void(0)">去注册</a></span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="user hid" style="display: none;">
+                        <table class="table table-hover" style="text-align: center;">
+                            <tr class="active">
+                                <th>#</th>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>账号</th>
+                                <th>金额/￥</th>
+                            </tr>
+                            <tr class="search table1">
+                                <td class="td1">1</td>
+                                <td class="td2">201642103422</td>
+                                <td class="td3">刘振军</td>
+                                <td class="td4">6666666666</td>
+                                <td class="td5">1000</td>
+                            </tr>
+                            <tr class="search table2">
+                                <td class="td1">2</td>
+                                <td class="td2">201642103422</td>
+                                <td class="td3">刘振军</td>
+                                <td class="td4">1111111111</td>
+                                <td class="td5">500</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-shadow">
+        <div class="box-content">
+            <h4 class="clearfix">注册<img src="images/close.gif"></h4>
+            <form action="" onsubmit="return false">
+                <input type="text" class="form-control Name" minlength="1"  maxlength="4" placeholder="请输入姓名">
+                <input type="text" class="form-control Code" maxlength="12" minlength="1" placeholder="请输入学号">
+                <button type="submit" class="btn btn-primary login">注册</button>
+            </form>
+        </div>
+    </div>
+    <div id="goodcover" style="display: none;"></div>
+    <div id="code" style="display: none;">
+        <div class="close1"><a href="javascript:void(0)" id="closebt"><img src="images/close.gif"></a></div>
+        <div class="goodtxt">
+            <p>充值成功！</p>
+            <p>感谢您的使用</p>
+            <p>让更多朋友知道哦~</p>
+        </div>
+    </div>
+    
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/amazeui.js"></script>
+    <script src="js/ui-choose.js"></script>
+    <script>
+        $(".left li").click(function () {
+            $(this).addClass("on").siblings().removeClass("on")
+        })
+        $(".left li").click(function() {
+            $(".user").eq($(this).index()).show().siblings().hide()
+        })
+        $(".go-login").click(function() {
+            $(".box-shadow").fadeIn()
+        })
+        $(".box-content h4 img").click(function() {
+            $(".box-shadow").fadeOut()
+        })
+        var b="";
+        var tableList="";
+        var tableList1=localStorage.getItem("tableList1")==null?"":localStorage.getItem("tableList1");
+        if(!tableList1=="") {
+            $(".table").empty()
+            $(".table").append(tableList1)
+        }
+        
+        $(".login").click(function() {
+            if(!(/^(?:[\u3400-\u4DB5\u4E00-\u9FEA\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879][\uDC00-\uDFFF]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0])+$/.test($(".Name").val()) && /\S/.test($(".Name").val()))) {
+                alert("请输入合法姓名")
+            }else if(!/^\d{12}$/.test($(".Code").val())) {
+                alert("学号格式为12位数字")
+            }else {
+                
+                for(var c=0;c<10;c++) {
+                    b += Math.floor(Math.random()*10)
+                }
+                getCode()
+                
+                alert("您的账号为"+b)
+                window.location.replace("index.html")
+            }
+        })
+        $(".ID").blur(function() {
+            var patt = new RegExp($(this).val());
+            var code = "";
+            for(var j=0;j<$(".search").length;j++) {
+                code+=$(".search .td4").eq(j).text()
+            }
+
+            if(patt.test(code)==false && $(this).val().length==10) {  //匹配账号
+                $(".am-alert-danger").eq(0).text("账号不存在").show()
+                $(".all-num").text(0)
+            }else if($(this).val().length<10) {
+                $(".all-num").text(0)
+            }else {
+                var a = code.indexOf($(this).val())/10    //获取匹配账号的索引，取出对应的金额
+                $(".all-num").text($(".search .td5").eq(a).text())
+            }
+        })
+
+         
+        function getCode() {  //存储用户信息
+            tableList=`
+            <tr class="search table${$(".search").length+1}">
+                <td class="td1">${$(".search").length+1}</td>
+                <td class="td2">${$(".Code").val()}</td>
+                <td class="td3">${$(".Name").val()}</td>
+                <td class="td4">${b}</td>
+                <td class="td5">0</td>
+            </tr>
+            `
+            $(".table tbody").append(tableList)
+            localStorage.setItem("tableList1",$(".table").html())
+        }
+        
+			// 将所有.ui-choose实例化
+			$('.ui-choose').ui_choose();
+			// uc_01 ul 单选
+			var uc_01 = $('#uc_01').data('ui-choose'); // 取回已实例化的对象
+			uc_01.click = function(index, item) {
+				console.log('click', index, item.text())
+			}
+			uc_01.change = function(index, item) {
+				console.log('change', index, item.text())
+			}
+			$(function() {
+				$('#uc_01 li:eq(3)').click(function() {
+					$('.tr_rechoth').show();
+					$('.tr_rechoth').find("input").attr('required', 'true')
+					$('.rechnum').text('0.00元');
+				})
+				$('#uc_01 li:eq(0)').click(function() {
+					$('.tr_rechoth').hide();
+					$('.rechnum').text('10.00元');
+					$('.othbox').val('');
+				})
+				$('#uc_01 li:eq(1)').click(function() {
+					$('.tr_rechoth').hide();
+					$('.rechnum').text('20.00元');
+					$('.othbox').val('');
+				})
+				$('#uc_01 li:eq(2)').click(function() {
+					$('.tr_rechoth').hide();
+					$('.rechnum').text('50.00元');
+					$('.othbox').val('');
+				})
+				$(document).ready(function() {
+					$('.othbox').on('input propertychange', function() {
+                        var num = $(this).val().split(".").join("");
+						$('.rechnum').html((num==""?0:num) + ".00元");
+					});
+                });
+                
+                $(".tr_pay").on("click",function() {   
+                        setTimeout(function() {
+                            if(!$(".am-alert").is(":visible")) { //确认支付
+                                var allNum = eval($(".addNum").text().split(".")[0]+"+"+$(".all-num").text())
+                                $(".all-num").text(allNum)
+                                var patt = new RegExp($(".ID").val());
+                                var code = "";
+                                for(var j=0;j<$(".search").length;j++) {
+                                    code+=$(".search .td4").eq(j).text()
+                                }
+                                var a = code.indexOf($(".ID").val())/10    //获取匹配账号的索引，取出对应的金额
+                                $(".search .td5").eq(a).text(allNum)
+                                $('#code').center();
+                                $('#goodcover').show();
+                                $('#code').fadeIn();
+                                
+                                localStorage.setItem("tableList1",$(".table").html())
+                            }
+                        },200)
+                })
+            
+			})
+
+			$(function() {
+				$('#doc-vld-msg').validator({
+					onValid: function(validity) {
+						$(validity.field).closest('.am-form-group').find('.am-alert').hide();
+					},
+					onInValid: function(validity) {
+						var $field = $(validity.field);
+						var $group = $field.closest('.am-form-group');
+						var $alert = $group.find('.am-alert');
+						// 使用自定义的提示信息 或 插件内置的提示信息
+						var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+						if(!$alert.length) {
+							$alert = $('<div class="am-alert am-alert-danger"></div>').hide().appendTo($group);
+						}
+                        $alert.html(msg).show();
+					}
+				});
+            });
+           
+            
+$(function() {
+    
+    $('#closebt').click(function() {
+        $('#code').fadeOut();
+        $('#goodcover').fadeOut();
+    });
+	$('#goodcover').click(function() {
+        $('#code').fadeOut();
+        $('#goodcover').fadeOut();
+    });
+    
+    jQuery.fn.center = function(loaded) {
+        var obj = this;
+        body_width = parseInt($(window).width());
+        body_height = parseInt($(window).height());
+        block_width = parseInt(obj.width());
+        block_height = parseInt(obj.height());
+
+        left_position = parseInt((body_width / 2) - (block_width / 2) + $(window).scrollLeft());
+        if (body_width < block_width) {
+            left_position = 0 + $(window).scrollLeft();
+        };
+
+        top_position = parseInt((body_height / 2) - (block_height / 2) + $(window).scrollTop());
+        if (body_height < block_height) {
+            top_position = 0 + $(window).scrollTop();
+        };
+
+        if (!loaded) {
+
+            obj.css({
+                'position': 'absolute'
+            });
+            obj.css({
+                'top': ($(window).height() - $('#code').height()) * 0.5,
+                'left': left_position
+            });
+            $(window).bind('resize', function() {
+                obj.center(!loaded);
+            });
+            $(window).bind('scroll', function() {
+                obj.center(!loaded);
+            });
+
+        } else {
+            obj.stop();
+            obj.css({
+                'position': 'absolute'
+            });
+            obj.animate({
+                'top': top_position
+            }, 200, 'linear');
+        }
+    }
+
+})
+
+		
+    </script>
+</body>
+
+</html>
